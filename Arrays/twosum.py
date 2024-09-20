@@ -9,7 +9,8 @@ def twoSum(nums: List[int], target) -> List[int]:
             return [index, counterparts[target - val]]
         counterparts[val] = index
     return []
+    for index, val in enumerate(nums):
+        print(index)
 
 
 print(twoSum([2, 7, 11, 15], 9))
-
