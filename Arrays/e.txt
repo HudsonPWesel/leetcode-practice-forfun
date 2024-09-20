@@ -1,0 +1,7 @@
+- Variables 
+- Loops (for loop, for-each, while)
+- Conditional (if, else if, else)
+- Arrays ([])
+- Functions
+- Classes & Objects (Object Oriented Programming)
+- Git & GitHub
