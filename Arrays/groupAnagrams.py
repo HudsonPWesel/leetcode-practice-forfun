@@ -13,5 +13,4 @@ def groupAnagrams(strs: List[str]) -> List[List[str]]:
     return res.values()
 
 
-print('ew')
 print(groupAnagrams(["act", "pots", "tops", "cat", "stop", "hat"]))
