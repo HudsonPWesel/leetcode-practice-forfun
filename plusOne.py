@@ -4,7 +4,7 @@ from typing import List
 def plusOne(digits: List[int]) -> List[int]:
     carry, i = 1, len(digits) - 1
     while carry:
-        if i < len(digits):
+        if i > -1:
             if digits[i] == 9:
                 digits[i] = 0
             else:
