@@ -21,17 +21,19 @@ Output: false'''
 def isAnagram(s: str, t: str) -> bool:
     if len(s) != len(t):
         return False
-    s_chars, t_chars = {}, {}
-    for i in range(0, len(s)):
-        s_chars[s[i]] = 1 + s_chars.get(s[i], 0)
-        t_chars[t[i]] = 1 + t_chars.get(t[i], 0)
-    for key in s_chars:
-        if s_chars[key] != t_chars.get(key, 0):
+    s_letters = {}
+    t_letters = {}
+
+    for i in range(len(s)):
+        s_letters[s[i]] = s_letters.get(s[i], 0) + 1
+        t_letters[t[i]] = t_letters.get(t[i], 0) + 1
+
+    for letter in s_letters:
+        if t_letters.get(letter, 0) != s_letters.get(letter, 0):
             return False
     return True
-    '''for i in range(len(s)):
-        if s[i] != t[len(s) - (1 + i)]:
-            return False'''
+    # return sort(s) == sort(t)
 
 
 print(isAnagram('anagram', 'nagaram'))
+print(isAnagram('cat', 'rat'))

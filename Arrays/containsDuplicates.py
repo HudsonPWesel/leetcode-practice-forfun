@@ -5,6 +5,7 @@ def hasDuplicate(nums) -> bool:
             return True
         else:
             seen_nums[num] = num
+
     return False
 
 

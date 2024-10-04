@@ -4,13 +4,12 @@ from typing import List
 
 def twoSum(nums: List[int], target) -> List[int]:
     counterparts = {}
-    for index, val in enumerate(nums):
-        if (target - val) in counterparts.keys():
-            return [index, counterparts[target - val]]
-        counterparts[val] = index
+    for i in range(len(nums)):
+        if abs(target - nums[i]) in counterparts:
+            return [counterparts[target - nums[i]], 1]
+        else:
+            counterparts[nums[i]] = i
     return []
-    for index, val in enumerate(nums):
-        print(index)
 
 
 print(twoSum([2, 7, 11, 15], 9))
