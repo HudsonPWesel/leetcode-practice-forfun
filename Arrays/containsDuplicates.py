@@ -1,9 +1,10 @@
 def hasDuplicate(nums) -> bool:
     seen_nums = {}
     for num in nums:
-        if seen_nums.get(num, 0) > 0:
+        if num in seen_nums:
             return True
-        seen_nums[num] = 1
+        else:
+            seen_nums[num] = num
     return False
 
 
