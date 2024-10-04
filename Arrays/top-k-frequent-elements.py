@@ -2,20 +2,19 @@ from typing import List
 
 
 def topKFrequent(nums: List[int], k: int) -> List[int]:
-    count = {}
-    freq = [[] for i in range(len(nums) + 1)]
+    res = {}
+    count = [[] for i in range(len(nums) + 1)]
+    final_res = []
 
-    for n in nums:
-        count[n] = 1 + count.get(n, 0)
-
-    for n, c in count.items():
-        freq[c].append(n)
-    res = []
-    for i in range(len(freq) - 1, 0, -1):
-        for n in freq[i]:
-            res.append(n)
-            if len(res) == k:
-                return res
+    for num in nums:
+        res[num] = res.get(num, 0) + 1
+    for num, num_count in res.items():
+        count[num_count].append(num)
+    for i in range(len(count) - 1, 0, -1):
+        for j in range(len(count[i])):
+            if len(final_res) != k:
+                final_res.append(count[i][j])
+    return final_res
 
 
-print(topKFrequent([1, 2], 2))
+print(topKFrequent([1, 2, 3, 3, 3], 2))
