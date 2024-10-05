@@ -1,12 +1,19 @@
-def searchInsert(self, nums: List[int], target: int) -> int:
-    l, r = 0, len(nums)
+from typing import List
 
+
+def searchInsert(nums: List[int], target: int) -> int:
+    l, r = 0, len(nums) - 1
+    mdpt = None
     while l <= r:
-        mdpt = int((l + r) / 2)
-        if target == nums[mdpt]:
-            return mdpt
-        if mdpt > target:
+        mdpt = (r + l) // 2
+        if nums[mdpt] > target:
+            r = mdpt - 1
+        elif nums[mdpt] < target:
             l = mdpt + 1
         else:
-            r = mdpt - 1
+            return mdpt
+    print(nums)
     return l
+
+
+print(searchInsert([1, 2, 3, 4], 0))
