@@ -9,32 +9,49 @@ class ListNode:
 
 
 def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
-    current = head
-    list_len = 0
-
-    while current:
-        list_len += 1
-        current = current.next
-
-    if list_len <= 1:
-        return None
-
-    # current = 1
-
-    distance = math.ceil(list_len / n)  # 1
-    prev, selected_el = None, head
-
-    for i in range(distance):
-        if i + 1 == distance:
-            prev = selected_el
-        selected_el = selected_el.next
-
-    prev.next = selected_el.next
-    selected_el.next = None
-
-    return head
+    '''
+  You are given the beginning of a linked list head, and an integer n.
 
 
-el = ListNode(5)
-head = el
-print(removeNthFromEnd(head, 1))
+  Remove the nth node from the end of the list
+
+  return the beginning of the list.
+
+  Input: head = [1,2,3,4], n = 2
+  Output: [1,2,4]
+
+
+
+  Input: head = [5], n = 1
+  Output: []
+
+  Starting from the end of the list remove n-hops from end
+
+  - Select elemnt to remove
+  - Remove that elemment
+
+  - prev
+  '''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+    dummy = ListNode(0, head)
+    l = dummy
+    r = head
+
+    for _ in range(n):
+        r = r.next
+
+    prev = None
+
+    while r:
+        l = l.next
+        r = r.next
+
+    l.next = l.next.next
+
+    return dummy.next
